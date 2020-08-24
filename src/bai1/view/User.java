@@ -10,6 +10,7 @@ import bai1.model.EmployeeSkill;
 import bai1.model.Skill;
 import java.awt.Checkbox;
 import java.awt.GridLayout;
+import java.awt.event.KeyEvent;
 import java.io.BufferedReader;
 import java.io.BufferedWriter;
 import java.io.FileReader;
@@ -31,9 +32,9 @@ public class User extends javax.swing.JFrame {
     ArrayList<JCheckBox> listCheckBox = new ArrayList<>();
     ArrayList<Skill> listSkillChoosed = new ArrayList<>();
     ArrayList<EmployeeSkill> listEmployeeSkill = new ArrayList<>();
-    String filePathSkill = "D:\\Java\\Bai1\\src\\bai1\\skill.txt";
-    String filePathEmployee = "D:\\Java\\Bai1\\src\\bai1\\employee.txt";
-    String filePathEmployeeSkill = "D:\\Java\\Bai1\\src\\bai1\\employeeskill.txt";
+    String filePathSkill = "C:\\Users\\sonpt\\Desktop\\java_cova\\src\\bai1\\skill.txt";
+    String filePathEmployee = "C:\\Users\\sonpt\\Desktop\\java_cova\\src\\bai1\\employee.txt";
+    String filePathEmployeeSkill = "C:\\Users\\sonpt\\Desktop\\java_cova\\src\\bai1\\employeeskill.txt";
     StringBuilder uid = new StringBuilder();
     String uname;
     /**
@@ -79,18 +80,25 @@ public class User extends javax.swing.JFrame {
     
     private boolean checkUserID(){
         String s = uid.toString();
-        for(int i = 0; i < uid.length(); i++){
-            if(i<2){
-                if((s.charAt(i)>='a'&&s.charAt(i)<='z')||(s.charAt(i)>='A'&&s.charAt(i)<='Z')){
-                    
+        
+        System.out.println(s.length());
+        if(uid.length()>8){
+            return false;
+        }
+        else{
+            for(int i = 0; i < uid.length(); i++){
+                if(i<2){
+                    if((s.charAt(i)>='a'&&s.charAt(i)<='z')||(s.charAt(i)>='A'&&s.charAt(i)<='Z')){
+
+                    }
+                    else return false; 
                 }
-                else return false; 
-            }
-            else{
-                if(s.charAt(i)>='0'&&s.charAt(i)<='9'){
-                    
+                else if(i>=2 && i<8){
+                    if(s.charAt(i)>='0'&&s.charAt(i)<='9'){
+
+                    }
+                    else return false;
                 }
-                else return false;
             }
         }
         return true;
@@ -199,7 +207,14 @@ public class User extends javax.swing.JFrame {
 
     private void tfUserIDKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_tfUserIDKeyTyped
         char s = evt.getKeyChar();
-        uid.append(s);
+        if(s == KeyEvent.VK_BACK_SPACE){
+            uid.append(s);
+            uid.delete(0, uid.length());
+            uid.append(tfUserID.getText());
+        }
+        else{
+            uid.append(s);
+        }
         System.out.println(uid.toString());
         if(checkUserID()) lbError.setVisible(false);
         else lbError.setVisible(true);
@@ -226,7 +241,7 @@ public class User extends javax.swing.JFrame {
     private void updateToFile(){
         BufferedWriter bw = null;
         try{
-            bw = new BufferedWriter(new FileWriter(filePathEmployee));
+            bw = new BufferedWriter(new FileWriter(filePathEmployee,true));
             bw.write(new Employee(uid.toString(), uname).toString());
             bw.close();
         }catch(Exception ex){
@@ -234,7 +249,7 @@ public class User extends javax.swing.JFrame {
         }
         BufferedWriter bw1 = null;
         try{
-            bw1 = new BufferedWriter(new FileWriter(filePathEmployeeSkill));
+            bw1 = new BufferedWriter(new FileWriter(filePathEmployeeSkill,true));
             for(EmployeeSkill es : listEmployeeSkill){
                 bw1.write(es.toString());
             }

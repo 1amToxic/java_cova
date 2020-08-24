@@ -22,7 +22,7 @@ public class Admin extends javax.swing.JFrame {
     DefaultTableModel model;
     ArrayList<Skill> listSkill = new ArrayList<>();
    Update update = new Update(this, true);
-   String filePath = "D:\\Java\\Bai1\\src\\bai1\\skill.txt";
+   String filePath = "C:\\Users\\sonpt\\Desktop\\java_cova\\src\\bai1\\skill.txt";
    Add add = new Add(this, true);
     /**
      * Creates new form Admin
