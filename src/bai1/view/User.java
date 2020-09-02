@@ -32,9 +32,9 @@ public class User extends javax.swing.JFrame {
     ArrayList<JCheckBox> listCheckBox = new ArrayList<>();
     ArrayList<Skill> listSkillChoosed = new ArrayList<>();
     ArrayList<EmployeeSkill> listEmployeeSkill = new ArrayList<>();
-    String filePathSkill = "C:\\Users\\sonpt\\Desktop\\java_cova\\src\\bai1\\skill.txt";
-    String filePathEmployee = "C:\\Users\\sonpt\\Desktop\\java_cova\\src\\bai1\\employee.txt";
-    String filePathEmployeeSkill = "C:\\Users\\sonpt\\Desktop\\java_cova\\src\\bai1\\employeeskill.txt";
+    String filePathSkill = "D:\\Java\\Bai1\\src\\bai1\\skill.txt";
+    String filePathEmployee = "D:\\Java\\Bai1\\src\\bai1\\employee.txt";
+    String filePathEmployeeSkill = "D:\\Java\\Bai1\\src\\bai1\\employeeskill.txt";
     StringBuilder uid = new StringBuilder();
     String uname;
     /**

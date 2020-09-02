@@ -121,7 +121,7 @@ public class Login extends javax.swing.JFrame {
         BufferedReader br = null;
         //C:\Users\sonpt\Desktop\java_cova\src\bai1\newfile
         try{
-            br = new BufferedReader(new FileReader("C:\\Users\\sonpt\\Desktop\\java_cova\\src\\bai1\\account.txt"));
+            br = new BufferedReader(new FileReader("D:\\Java\\Bai1\\src\\bai1\\account.txt"));
             String stringRead;
             while((stringRead = br.readLine()) != null){
                 listString.add(stringRead);
